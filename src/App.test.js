@@ -1,7 +1,7 @@
 import { logRoles, render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('It chhanges the state depending on the event', () => {
+test('It changes the state depending on the event', () => {
   render(<App />);
 
   const checkbox = screen.getByRole('checkbox', { name: 'Disable Button' });
@@ -9,7 +9,9 @@ test('It chhanges the state depending on the event', () => {
 
   fireEvent.click(checkbox);
   expect(colorButton).not.toBeEnabled();
+  expect(colorButton).toHaveStyle('background-color: gray');
 
   fireEvent.click(checkbox);
   expect(colorButton).toBeEnabled();
+  expect(colorButton).toHaveStyle('background-color: red');
 });
