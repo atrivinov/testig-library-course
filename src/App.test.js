@@ -1,12 +1,11 @@
 import { logRoles, render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('It chhanges the state depending on the event', () => {
   render(<App />);
 
-  // debo obtener el boton y checkbox
-  const checkbox = screen.getByRole('checkbox');
-  const colorButton = screen.getByRole('button', {name: 'Change to red'});
+  const checkbox = screen.getByRole('checkbox', { name: 'Disable Button' });
+  const colorButton = screen.getByRole('button', { name: 'Change to red' });
 
   fireEvent.click(checkbox);
   expect(colorButton).not.toBeEnabled();
